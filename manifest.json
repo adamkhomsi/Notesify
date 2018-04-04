@@ -1,0 +1,36 @@
+{
+  "name": "notesify",
+  "version": "3.1",
+  "description": "Populate note history field for TS",
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "manifest_version": 2,
+  "permissions": [
+    "tabs",
+    "https://app.shopify.com/services/internal/shops/*",
+    "clipboardRead",
+    "storage"
+  ],
+  "background": {
+    "persistent": false,
+    "page": "background.html"
+  },
+  "browser_action": {
+        "default_icon": "icon-48.png",
+        "default_popup": "options.html",
+        "default_title": "Options"
+    },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+  "content_scripts": [{
+    "matches": ["https://app.shopify.com/services/internal/shops/*"],
+    "js": ["jquery.js", "notesify.js"],
+    "run_at": "document_end",
+    "all_frames": false
+  }]
+}

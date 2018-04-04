@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Test Extension Options</title>
+  <style>
+    body {
+      background-color: #03044b9c;
+      font-family: sans-serif;
+      margin: 0px;
+      font-size: 20px
+    }
+
+    .main_content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: left;
+      background-color: #03044b9;
+      font-size: 0.7em;
+      color: white;
+      width: 110px;
+      height: 110px;
+      padding: 10px;
+    }
+
+    button {
+      width: 100%;
+      height: 30px;
+      border-radius: 2px 2px 2px 2px;
+      border: 1px solid white;
+      background-color: #1d235f;
+      color: white;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 100px;
+      background-color: #1d235f;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      left: 15px;
+      top: 15px;
+      border-radius: 0px 10px 10px 10px;
+      border: 1px solid white;
+      background-color: #1d235f;
+      color: white;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
+    span {
+     width:100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main_content">
+
+    <span class="tooltip">
+      <label><input type="checkbox" id="dp"> Alert DP</label>
+      <span class="tooltiptext">Enable alert when design time is policied</span>
+    </span>
+    <span class="tooltip">
+      <label><input type="checkbox" id="dpWarn"> Alert DP warn</label>
+      <span class="tooltiptext">Enable alert when design time is ~ 45min</span>
+    </span>
+
+    <button id="save">Save</button>
+  </div>
+  <script src="options.js"></script>
+</body>
+
+</html>
