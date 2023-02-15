@@ -1,6 +1,12 @@
 {% comment %} Product Page Logic {% endcomment %}
 {%- liquid
-  assign current_variant = product.selected_or_first_available_variant
+
+  if product.has_only_default_variant  
+    assign current_variant = product.selected_or_first_available_variant
+  else 
+   assign current_variant = product.selected_variant
+  endif 
+   
   assign first_3d_model = product.media | where: "media_type", "model" | first
 
   assign thumbnail_position = section.settings.thumbnail_position
@@ -49,7 +55,11 @@
   unless current_variant.available
    assign call_to_action = 'products.product.sold_out' | t
   endunless
-
+    
+  if current_variant == blank
+    assign call_to_action = "Pick a size"
+  endif
+    
   assign coming_soon = false
   if product.metafields.my_fields.launch != blank
     assign launch_date = product.metafields.my_fields.launch.value | date: "%s"
